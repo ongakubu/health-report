@@ -1,3 +1,6 @@
 # health-report
 新型コロナウイルス感染症（COVID-19）対応の一環として、学習院輔仁会音楽部において開発・運用している健康観察システムです。
-Google Forms, Spreadsheet, Apps Scriptを用いています。
+Google Forms、Spreadsheet、Apps Scriptを用いています。
+## 主な機能
+* 報告フォーム（体温、体調）を毎朝メールで配信
+* 37.5℃以上の発熱ないし体調不良発生時に管理者に自動で通知
