@@ -19,7 +19,7 @@ Google Forms、Spreadsheet、Apps Scriptを用いており、質問項目等は�
 6. ユーザが配信された報告フォームに必要事項（体温、体調等）を入力して回答を送信する。
 7. もし発熱や体調不良等が報告された場合は、管理者にメールで自動通知する。
 
-## 利用方法
+## 構築方法
 ### 1. 登録フォームを作成する。
 #### 1.1. 質問を作成する。
 * [登録フォーム質問項目](https://github.com/ongakubu/health-report/blob/main/register_form/register_form_questions.md)
