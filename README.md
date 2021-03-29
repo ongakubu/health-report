@@ -1,6 +1,6 @@
 # health-report
 新型コロナウイルス感染症（COVID-19）対応の一環として、[学習院輔仁会音楽部](https://www.ongakubu.org)において開発・運用している健康観察システムです。
-Google Forms、Spreadsheet、Apps Scriptを用いています。
+Google Forms、Spreadsheet、Apps Scriptを用いています。フォームの項目等は学生オーケストラに最適化されていますので、必要に応じて変更・調整してご利用ください。
 ## 主な機能
 * 報告フォーム（体温、体調等）をメールで定時配信
 * ユーザ識別情報のフォームへの事前入力
