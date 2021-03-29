@@ -5,6 +5,7 @@ Google Forms、Spreadsheet、Apps Scriptを用いています。
 * 報告フォーム（体温、体調）を毎朝メールで配信
 * 37.5℃以上の発熱ないし体調不良発生時は管理者に自動で通知
 ## 仕組み
+![20210329_health_report_system_v3](https://user-images.githubusercontent.com/18068336/112784621-1f9b6c00-908d-11eb-92e8-96a4887b50c4.jpg)
 
 ## 使い方
 
