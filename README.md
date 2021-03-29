@@ -67,5 +67,5 @@ Google Forms、Spreadsheet、Apps Scriptを用いており、フォームの質�
 
 YEVGENIA（2020）「[GAS(Google Apps Script)ー会社でGAS+Googleフォーム+スプレッドシートを使ってメール通知機能を備えた健康確認アンケートを無料で作成した話](https://blowup-bbs.com/gas-googleform-spreadsheet-helthsheet/)」『Blow Up by Black Swan』2020年4月20日（参照日：2021年3月15日）。
 
-## 免責事項
-この健康観察システムを利用した結果生じたあらゆる損害等に対しても、学習院輔仁会音楽部は理由を問わず一切責任を負いません。
+## License
+[MIT Licensed.](https://github.com/ongakubu/health-report/blob/main/LICENSE)
