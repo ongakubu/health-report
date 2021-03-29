@@ -69,7 +69,7 @@ function sendEveryoneEveryday () {
                   + 'ごきげんよう。\n'
                   + '下記リンク先のあなた専用フォームから、'+ todayMd +'の健康観察を報告してください。\n\n'
                   + 'https://docs.google.com/forms/d/e/報告フォームのID/viewform?entry.xxxxxxxxx='+studentno+'&entry.xxxxxxxxx='+part+'&entry.xxxxxxxxx='+name+'&entry.xxxxxxxxx='+mailto+'&entry.xxxxxxxxxx_year='+todayYear+'&entry.xxxxxxxxxx_month='+todayMonth+'&entry.xxxxxxxxxx_day='+todayDate+'\n\n'
-                  // entry.xxxxxxxxxxの値は作成した報告フォームのソースコードを参照して、対応する値をそれぞれ設定する。
+                  // entry.xxxxxxxxxxの値は作成した報告フォームのソースコード（HTML）を参照して、対応する値をそれぞれ設定する。
                   + '毎日欠かさず報告してください。なお、システムにおける自動集計処理上の締切は特に設けておりません。\n'
                   + 'もし当日中に報告が間に合わなかった場合は、メール配信されたフォームから適宜追報告するようにしてください。自動的に集計に追加されます。\n\n'
                   + 'ただし、お身体の具合があまりよろしくない場合や、ご自身や同居されている方などに感染が疑われる場合（検査結果『陽性』など）は、団体全体の活動にかかわりますので可及的速やかに報告してください。\n\n'
