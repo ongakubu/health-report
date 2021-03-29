@@ -1,6 +1,6 @@
 /*体調不良者を役職者に通知する*/
 // FormApp.getActiveForm()
-function notifySupervisors(e){
+function notifyManagers(e){
     const responses         = e.response.getItemResponses();
     const studentno         = responses[0].getResponse();
     const part              = responses[1].getResponse();
