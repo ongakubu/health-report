@@ -19,49 +19,6 @@ Google Forms、Spreadsheet、Apps Scriptを用いており、フォームの質�
 6. ユーザが配信された報告フォームに必要事項（体温、体調等）を入力して回答を送信する。
 7. もし発熱や体調不良等が報告された場合は、管理者にメールで自動通知する。
 
-## 構築方法
-### 1. 登録フォームを作成する。
-#### 1.1. 質問を作成する。
-* [登録フォーム質問項目](https://github.com/ongakubu/health-report/blob/main/register_form/register_form_questions.md)
-#### 1.2. 登録フォームの回答を保存するスプレッドシートを作成する。
-登録フォームの回答編集画面からスプレッドシートを作成する。
-* [登録フォーム回答](https://github.com/ongakubu/health-report/blob/main/register_form_answer/register_form_answer.md)
-#### 1.3. 登録フォームに自動返信スクリプトを追加する。
-登録フォームの編集画面からスクリプトエディタを開き、次のプログラムを追加し、変数を適切に設定する。
-* [confirmRegistration.gs](https://github.com/ongakubu/health-report/blob/main/register_form/confirmRegisteration.gs)
-#### 1.4. 登録フォームの自動返信スクリプトにトリガーを設定する。
-スクリプトエディタのトリガー編集画面にて、トリガーを設定する。
-|No.|実行する関数を選択|デプロイ時に実行|イベントのソースを選択|イベントの種類を選択|エラー通知設定|
-|:--|:--|:--|:--|:--|:--|
-|1|sendRegisterConfirm|Head|フォームから|フォーム送信時|今すぐ通知を受け取る|
-### 2. 宛先一覧スプレッドシートを作成する。
-#### 2.1. 空のスプレッドシートを作成する。
-* [recipients](https://github.com/ongakubu/health-report/blob/main/recipients/recipients.md)
-#### 2.2 宛先一覧スプレッドシートにスクリプトを追加する。
-メニューバー＞ツール＞スクリプトエディタを開き、次のプログラムを追加し、変数を適切に設定する。
-* [manageRecipientsSendBulk.gs](https://github.com/ongakubu/health-report/blob/main/recipients/manageRecipientsSendBulk.gs)
-#### 2.3. 宛先一覧スプレッドシートのスクリプトにトリガーを設定する。
-スクリプトエディタのトリガー編集画面にて、次の3つのトリガーを設定する。
-|No.|実行する関数を選択|デプロイ時に実行|イベントのソースを選択|時間ベースのトリガーのタイプを選択|時刻を選択|エラー通知設定|
-|:--|:--|:--|:--|:--|:--|:--|
-|1|getRecipients|Head|時間主導型|特定の日時|健康観察開始日時を設定|今すぐ通知を受け取る|
-|2|addRecipients|Head|時間主導型|日付ベースのタイマー|メール配信時刻の1時間前|今すぐ通知を受け取る|
-|3|sendEveryoneEveryday|Head|時間主導型|日付ベースのタイマー|メール配信時刻（例えば午前6時〜7時）|今すぐ通知を受け取る|
-### 3. 報告フォームを作成する。
-#### 3.1. 質問を作成する。
-* [報告フォーム質問項目](https://github.com/ongakubu/health-report/blob/main/report_form/report_from_questions.md)
-#### 3.2. 報告フォームの回答を保存するスプレッドシートを作成する。
-報告フォームの回答編集画面からスプレッドシートを作成する。
-* [報告フォーム回答](https://github.com/ongakubu/health-report/blob/main/report_form_answer/report_form_answer.md)
-#### 3.3. 報告フォームに自動返信スクリプトを追加する。
-報告フォームの編集画面からスクリプトエディタを開き、次のプログラムを追加し、変数を適切に設定する。
-* [notifyManagers.gs](https://github.com/ongakubu/health-report/blob/main/report_form/notifyManagers.gs)
-#### 3.4. 報告フォームの自動返信スクリプトにトリガーを設定する。
-スクリプトエディタのトリガー編集画面にて、トリガーを設定する。
-|No.|実行する関数を選択|デプロイ時に実行|イベントのソースを選択|イベントの種類を選択|エラー通知設定|
-|:--|:--|:--|:--|:--|:--|
-|1|notifyManagers|Head|フォームから|フォーム送信時|今すぐ通知を受け取る|
-
 ## 参考文献・資料
 奥村太一（2019）「[Google Appsを用いたオンライン縦断調査システムの構築](https://hdl.handle.net/10513/00007954)」『上越教育大学研究紀要』第38巻第2号、上越教育大学、pp.239-250（参照日：2020年9月14日）。
 
