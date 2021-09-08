@@ -46,8 +46,8 @@ Google Forms、Spreadsheet、Apps Scriptを用いており、フォームの質�
       ![report_form_questions_option3_section3_submit.png](https://raw.githubusercontent.com/ongakubu/health-report/main/screenshots/report_form_questions_option3_section3_submit.png)
 3. 報告フォームの回答を格納するスプレッドシートを、報告フォームの編集画面の回答集計画面から作成する。
 4. 登録フォームの編集画面から、スクリプトエディタを起動し、登録フォームに紐づいたApps Scriptプロジェクトを作成する。
-5. register_formフォルダ内の各スクリプトを作成する。
-6. register_setup.gs内部の設定値を定義する。
+5. [register_formフォルダ](https://github.com/ongakubu/health-report/tree/main/register_form)内の各スクリプトを作成する。
+6. [register_setup.gs](https://github.com/ongakubu/health-report/blob/main/register_form/register_setup.gs)内部の設定値を定義する。
 ```
 /*健康観察開始日*/
 const startDate = new Date();
@@ -86,14 +86,14 @@ const reportSheet     = SpreadsheetApp.openById(reportSheetId);
 const systemEmail       = 'health-report@example.com';
 const supervisorsEmail  = 'manager1@example.com,manager2@example.com';
 ```
-7. sendBulk.gs内部にある報告フォームと登録フォームのリンクを先ほど作ったものに置き換える。
+7. [sendBulk.gs](https://github.com/ongakubu/health-report/blob/main/register_form/sendBulk.gs)内部にある報告フォームと登録フォームのリンクを先ほど作ったものに置き換える。
 ```
 + 'https://docs.google.com/forms/d/e/報告フォームのID/viewform?entry.xxxxxxxxx='+studentno+'&entry.xxxxxxxxxx='+part+'&entry.xxxxxxxxx='+name+'&entry.xxxxxxxxx='+mailTo+'&entry.xxxxxxxxx='+mobilephone+'&entry.xxxxxxxxx='+todayYear+'-'+todayMonth+'-'+todayDate+'\n\n'
 + 'https://docs.google.com/forms/d/e/登録フォームのID/viewform?entry.xxxxxxxxxx='+studentno+'&entry.xxxxxxxxx='+part+'&entry.xxxxxxxxx='+name+'\n\n'
 ```
 8. 報告フォームの編集画面から、スクリプトエディタを起動し、報告フォームに紐づいたApps Scriptプロジェクトを作成する。
-9. report_formフォルダ内の各スクリプトを作成する。
-10. report_setup.gs内部の設定値を定義する（時刻やファイルIDなどの内容はregister_setup.gsと一致させる）。
+9. [report_formフォルダ](https://github.com/ongakubu/health-report/tree/main/report_form)内の各スクリプトを作成する。
+10. [report_setup.gs](https://github.com/ongakubu/health-report/blob/main/report_form/report_setup.gs)内部の設定値を定義する（時刻やファイルIDなどの内容は[register_setup.gs](https://github.com/ongakubu/health-report/blob/main/register_form/register_setup.gs)と一致させる）。
 ```
 /*健康観察開始日*/
 const startDate = new Date();
@@ -136,8 +136,8 @@ const reportWorksheet = reportSheet.getSheetByName('report_form_answer');
 const systemEmail       = 'health-report@example.com';
 const supervisorsEmail  = 'manager1@example.com,manager2@example.com';
 ```
-11. register_setup.gsの"initialization"関数を実行する。
-12. report_setup.gsの"initialization"関数を実行する。
+11. [register_setup.gs](https://github.com/ongakubu/health-report/blob/main/register_form/register_setup.gs)の"initialization"関数を実行する。
+12. [report_setup.gs](https://github.com/ongakubu/health-report/blob/main/report_form/report_setup.gs)の"initialization"関数を実行する。
 13. 登録フォームのURLを団体構成員に共有して登録してもらう。
 14. 健康観察開始日になると配信等が開始される。
 
