@@ -25,6 +25,110 @@ Google Forms、Spreadsheet、Apps Scriptを用いており、フォームの質�
 10. もし発熱や体調不良等が報告された場合は、当該報告を送信したユーザと管理者にメールで自動通知する。
 11. トリガーで設定した時刻に、当日未報告者一覧ワークシートの内容を管理者にメールで自動通知する（任意）。
 
+## 構築方法
+1. 登録フォームを作成する。
+2. 登録フォームの回答を格納するスプレッドシートを、登録フォームの編集画面の回答集計画面から作成する。
+2. 報告フォームを作成する。
+    * セクション1内、体温を尋ねる質問は、プルダウン形式にし、回答に応じてセクションに移動を設定し、37.5℃以上の場合はセクション4（体調不良等有り）に移動させる。
+    * セクション2内、体調不良等の有無を尋ねる質問は、プルダウン形式にし、回答に応じてセクションに移動を設定し、無しの場合はセクション3（体調不良等無し）に、有りの場合はセクション4（体調不良等有り）に移動させる。
+    * セクション3は、それ以降の遷移について、フォームを送信、と設定する。
+3. 報告フォームの回答を格納するスプレッドシートを、報告フォームの編集画面の回答集計画面から作成する。
+4. 登録フォームの編集画面から、スクリプトエディタを起動し、登録フォームに紐づいたApps Scriptプロジェクトを作成する。
+5. register_formフォルダ内の各スクリプトを作成する。
+6. register_setup.gs内部の設定値を定義する。
+```
+/*健康観察開始日*/
+const startDate = new Date();
+/*setFullYear(西暦4桁, 月0–11, 日1–31)*/
+startDate.setFullYear(2021, 9, 31);  /*例えばこれは2021年10月31日*/
+startDate.setHours(4);
+startDate.setMinutes(0);
+startDate.setSeconds(0);
+
+/*日次メンテナンスの終了時刻*/
+const maintenanceTime = new Date();
+maintenanceTime.setHours(5);
+maintenanceTime.setMinutes(55);
+
+/*締切時刻（演奏会当日など）*/
+const deadline  = new Date();
+deadline.setFullYear(2021, 10, 20);
+deadline.setHours(9);
+deadline.setMinutes(0);
+deadline.setSeconds(0);
+const nMunitutesBeforeForReminder1 = 30;  /*締切時刻30分前のリマインダ*/
+const nMunitutesBeforeForReminder2 = 15;  /*締切時刻15分前のリマインダ*/
+
+/*各ファイルの定義*/
+const registerFormId    = '登録フォームのID';
+const registerForm      = FormApp.openById(registerFormId);
+const registerSheetId   = '登録フォーム（回答）スプレッドシートのID';
+const registerSheet     = SpreadsheetApp.openById(registerSheetId);
+
+const reportFormId    = '報告フォームのID';
+const reportForm      = FormApp.openById(reportFormId);
+const reportSheetId   = '報告フォーム（回答）スプレッドシートのID';
+const reportSheet     = SpreadsheetApp.openById(reportSheetId);
+
+/*各メールアドレスの定義*/
+const systemEmail       = 'health-report@example.com';
+const supervisorsEmail  = 'manager1@example.com,manager2@example.com';
+```
+7. sendBulk.gs内部にある報告フォームと登録フォームのリンクを先ほど作ったものを置き換える。
+```
++ 'https://docs.google.com/forms/d/e/報告フォームのID/viewform?entry.xxxxxxxxx='+studentno+'&entry.xxxxxxxxxx='+part+'&entry.xxxxxxxxx='+name+'&entry.xxxxxxxxx='+mailTo+'&entry.xxxxxxxxx='+mobilephone+'&entry.xxxxxxxxx='+todayYear+'-'+todayMonth+'-'+todayDate+'\n\n'
++ 'https://docs.google.com/forms/d/e/登録フォームのID/viewform?entry.xxxxxxxxxx='+studentno+'&entry.xxxxxxxxx='+part+'&entry.xxxxxxxxx='+name+'\n\n'
+```
+8. 報告フォームの編集画面から、スクリプトエディタを起動し、報告フォームに紐づいたApps Scriptプロジェクトを作成する。
+9. report_formフォルダ内の各スクリプトを作成する。
+10. report_setup.gs内部の設定値を定義する（時刻やファイルIDなどの内容はregister_setup.gsと一致させる）。
+```
+/*健康観察開始日*/
+const startDate = new Date();
+/*setFullYear(西暦4桁, 月0–11, 日1–31)*/
+startDate.setFullYear(2021, 9, 31);  /*例えばこれは2021年10月31日*/
+startDate.setHours(4);
+startDate.setMinutes(0);
+startDate.setSeconds(0);
+
+/*日次メンテナンスの終了時刻*/
+const maintenanceTime = new Date();
+maintenanceTime.setHours(5);
+maintenanceTime.setMinutes(55);
+
+/*締切時刻（演奏会当日など）*/
+const deadline  = new Date();
+deadline.setFullYear(2021, 10, 20);
+deadline.setHours(9);
+deadline.setMinutes(0);
+deadline.setSeconds(0);
+const nMunitutesBeforeForReminder1 = 30;
+const nMunitutesBeforeForReminder2 = 15;
+
+/*各ファイルの定義*/
+const registerFormId        = '登録フォームのID';
+const registerForm          = FormApp.openById(registerFormId);
+const registerSheetId       = '登録フォーム（回答）スプレッドシートのID';
+const registerSheet         = SpreadsheetApp.openById(registerSheetId);
+const registerWorksheet     = registerSheet.getSheetByName('register_form_answer');
+const recipientsWorksheet   = registerSheet.getSheetByName('recipients');
+const unsubmittedWorksheet  = registerSheet.getSheetByName('unsubmitted');
+
+const reportFormId    = '報告フォームのID';
+const reportForm      = FormApp.openById(reportFormId);
+const reportSheetId   = '報告フォーム（回答）スプレッドシートのID';
+const reportSheet     = SpreadsheetApp.openById(reportSheetId);
+const reportWorksheet = reportSheet.getSheetByName('report_form_answer');
+
+/*各メールアドレスの定義*/
+const systemEmail       = 'health-report@example.com';
+const supervisorsEmail  = 'manager1@example.com,manager2@example.com';
+```
+11. register_setup.gsの"initialization"関数を実行する。
+12. report_setup.gsの"initialization"関数を実行する。
+13. 登録フォームのURLを団体構成員に共有して登録してもらう。
+14. 健康観察開始日になると配信等が開始される。
+
 ## 参考文献・資料
 奥村太一（2019）「[Google Appsを用いたオンライン縦断調査システムの構築](https://hdl.handle.net/10513/00007954)」『上越教育大学研究紀要』第38巻第2号、上越教育大学、pp.239-250（参照日：2020年9月14日）。
 
