@@ -29,7 +29,7 @@ Google Forms、Spreadsheet、Apps Scriptを用いており、フォームの質�
 1. [登録フォーム](https://github.com/ongakubu/health-report/blob/main/screenshots/register_form_questions.png)を作成する。
 2. 登録フォームの回答を格納するスプレッドシートを、登録フォームの編集画面の回答集計画面から作成する。
 2. 報告フォームを作成する。
-    * セクション1（ユーザ識別情報と体温）
+    * セクション1（ユーザ識別情報および報告日ならびに体温）
       ![report_form_questions_section1.png](https://raw.githubusercontent.com/ongakubu/health-report/main/screenshots/report_form_questions_section1.png)
     * セクション2（体調不良等の有無）
       ![report_form_questions_section2.png](https://raw.githubusercontent.com/ongakubu/health-report/main/screenshots/report_form_questions_section2.png)
