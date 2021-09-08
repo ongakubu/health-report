@@ -26,12 +26,23 @@ Google Forms、Spreadsheet、Apps Scriptを用いており、フォームの質�
 11. トリガーで設定した時刻に、当日未報告者一覧ワークシートの内容を管理者にメールで自動通知する（任意）。
 
 ## 構築方法
-1. 登録フォームを作成する。
+1. [登録フォーム](https://github.com/ongakubu/health-report/blob/main/screenshots/register_form_questions.png)を作成する。
 2. 登録フォームの回答を格納するスプレッドシートを、登録フォームの編集画面の回答集計画面から作成する。
 2. 報告フォームを作成する。
+    * セクション1（ユーザ識別情報と体温）
+      ![report_form_questions_section1.png](https://raw.githubusercontent.com/ongakubu/health-report/main/screenshots/report_form_questions_section1.png)
+    * セクション2（体調不良等の有無）
+      ![report_form_questions_section2.png](https://raw.githubusercontent.com/ongakubu/health-report/main/screenshots/report_form_questions_section2.png)
+    * セクション3（体調不良等無し）
+      ![report_form_questions_section3.png](https://raw.githubusercontent.com/ongakubu/health-report/main/screenshots/report_form_questions_section3.png)
+    * セクション4（体調不良等有り）
+      ![report_form_questions_section4.png](https://raw.githubusercontent.com/ongakubu/health-report/main/screenshots/report_form_questions_section4.png)
     * セクション1内、体温を尋ねる質問は、プルダウン形式にし、回答に応じてセクションに移動を設定し、37.5℃以上の場合はセクション4（体調不良等有り）に移動させる。
+      ![report_form_questions_option1_section1_temparature.png](https://raw.githubusercontent.com/ongakubu/health-report/main/screenshots/report_form_questions_option1_section1_temparature.png)
     * セクション2内、体調不良等の有無を尋ねる質問は、プルダウン形式にし、回答に応じてセクションに移動を設定し、無しの場合はセクション3（体調不良等無し）に、有りの場合はセクション4（体調不良等有り）に移動させる。
+      ![report_form_questions_option2_section2_condition.png](https://raw.githubusercontent.com/ongakubu/health-report/main/screenshots/report_form_questions_option2_section2_condition.png)
     * セクション3は、それ以降の遷移について、フォームを送信、と設定する。
+      ![report_form_questions_option3_section3_submit.png](https://raw.githubusercontent.com/ongakubu/health-report/main/screenshots/report_form_questions_option3_section3_submit.png)
 3. 報告フォームの回答を格納するスプレッドシートを、報告フォームの編集画面の回答集計画面から作成する。
 4. 登録フォームの編集画面から、スクリプトエディタを起動し、登録フォームに紐づいたApps Scriptプロジェクトを作成する。
 5. register_formフォルダ内の各スクリプトを作成する。
