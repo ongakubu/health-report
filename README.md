@@ -26,9 +26,10 @@ Google Forms、Spreadsheet、Apps Scriptを用いており、フォームの質�
 11. トリガーで設定した時刻に、当日未報告者一覧ワークシートの内容を管理者にメールで自動通知する（任意）。
 
 ## 構築方法
-1. [登録フォーム](https://github.com/ongakubu/health-report/blob/main/screenshots/register_form_questions.png)を作成する。
-2. 登録フォームの回答を格納するスプレッドシートを、登録フォームの編集画面の回答集計画面から作成する。
-2. 報告フォームを作成する。
+1. 登録フォームを作成する。
+   ![register_form_questions.png](https://github.com/ongakubu/health-report/blob/main/screenshots/register_form_questions.png)
+3. 登録フォームの回答を格納するスプレッドシートを、登録フォームの編集画面の回答集計画面から作成する。
+4. 報告フォームを作成する。
     * セクション1（ユーザ識別情報および報告日ならびに体温）
       ![report_form_questions_section1.png](https://raw.githubusercontent.com/ongakubu/health-report/main/screenshots/report_form_questions_section1.png)
     * セクション2（体調不良等の有無）
