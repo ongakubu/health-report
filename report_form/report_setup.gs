@@ -10,6 +10,7 @@ const currentTime   = Utilities.formatDate(today, 'GMT+9', 'H:mm');
 const yesterday     = new Date(today.getFullYear(), today.getMonth(), today.getDate()-1);
 const yesterdayCode = Utilities.formatDate(yesterday, 'GMT+9', 'yyyyMMdd');
 
+/*健康観察開始日*/
 const startDate = new Date();
 /*setFullYear(西暦4桁, 月0–11, 日1–31)*/
 startDate.setFullYear(2021, 9, 31);  /*例えばこれは2021年10月31日*/
@@ -17,10 +18,12 @@ startDate.setHours(4);
 startDate.setMinutes(0);
 startDate.setSeconds(0);
 
+/*日次メンテナンスの終了時刻*/
 const maintenanceTime = new Date();
 maintenanceTime.setHours(5);
 maintenanceTime.setMinutes(55);
 
+/*締切時刻（演奏会当日など）*/
 const deadline  = new Date();
 deadline.setFullYear(2021, 10, 20);
 deadline.setHours(9);
