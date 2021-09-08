@@ -74,7 +74,7 @@ const reportSheet     = SpreadsheetApp.openById(reportSheetId);
 const systemEmail       = 'health-report@example.com';
 const supervisorsEmail  = 'manager1@example.com,manager2@example.com';
 ```
-7. sendBulk.gs内部にある報告フォームと登録フォームのリンクを先ほど作ったものを置き換える。
+7. sendBulk.gs内部にある報告フォームと登録フォームのリンクを先ほど作ったものに置き換える。
 ```
 + 'https://docs.google.com/forms/d/e/報告フォームのID/viewform?entry.xxxxxxxxx='+studentno+'&entry.xxxxxxxxxx='+part+'&entry.xxxxxxxxx='+name+'&entry.xxxxxxxxx='+mailTo+'&entry.xxxxxxxxx='+mobilephone+'&entry.xxxxxxxxx='+todayYear+'-'+todayMonth+'-'+todayDate+'\n\n'
 + 'https://docs.google.com/forms/d/e/登録フォームのID/viewform?entry.xxxxxxxxxx='+studentno+'&entry.xxxxxxxxx='+part+'&entry.xxxxxxxxx='+name+'\n\n'
