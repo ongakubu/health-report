@@ -43,7 +43,7 @@ function createSubmissionStatusWorksheet() {
       var submission2DaysBefore     = '=IF(FILTER(report_form_answer!$B:$G, report_form_answer!$B:$B=$A'+(i+1)+', report_form_answer!$C:$C=$B'+(i+1)+', report_form_answer!$D:$D=$C'+(i+1)+', report_form_answer!$G:$G=P$1)=$A'+(i+1)+',"OK")';
       var submissionYesterday       = '=IF(FILTER(report_form_answer!$B:$G, report_form_answer!$B:$B=$A'+(i+1)+', report_form_answer!$C:$C=$B'+(i+1)+', report_form_answer!$D:$D=$C'+(i+1)+', report_form_answer!$G:$G=Q$1)=$A'+(i+1)+',"OK")';
       var submissionToday           = '=IF(FILTER(report_form_answer!$B:$G, report_form_answer!$B:$B=$A'+(i+1)+', report_form_answer!$C:$C=$B'+(i+1)+', report_form_answer!$D:$D=$C'+(i+1)+', report_form_answer!$G:$G=R$1)=$A'+(i+1)+',"OK")';
-      var last3DaysSubmissionRate   = '=COUNTIF(Q'+(i+1)+':R'+(i+1)+', "OK")/COUNTA(Q'+(i+1)+':R'+(i+1)+')';
+      var last3DaysSubmissionRate   = '=COUNTIF(P'+(i+1)+':R'+(i+1)+', "OK")/COUNTA(P'+(i+1)+':R'+(i+1)+')';
       var last14DaysSubmissionRate  = '=COUNTIF(D'+(i+1)+':R'+(i+1)+', "OK")/COUNTA(D'+(i+1)+':R'+(i+1)+')';
   
       submissionStatusWorksheet.getRange(i+1, 4).setValue(submission14DaysBefore);
@@ -123,7 +123,7 @@ function createSubmissionStatusWorksheet() {
       var submission2DaysBefore     = '=IF(FILTER(report_form_answer!$B:$G, report_form_answer!$B:$B=$A'+(i+1)+', report_form_answer!$C:$C=$B'+(i+1)+', report_form_answer!$D:$D=$C'+(i+1)+', report_form_answer!$G:$G=P$1)=$A'+(i+1)+',"OK")';
       var submissionYesterday       = '=IF(FILTER(report_form_answer!$B:$G, report_form_answer!$B:$B=$A'+(i+1)+', report_form_answer!$C:$C=$B'+(i+1)+', report_form_answer!$D:$D=$C'+(i+1)+', report_form_answer!$G:$G=Q$1)=$A'+(i+1)+',"OK")';
       var submissionToday           = '=IF(FILTER(report_form_answer!$B:$G, report_form_answer!$B:$B=$A'+(i+1)+', report_form_answer!$C:$C=$B'+(i+1)+', report_form_answer!$D:$D=$C'+(i+1)+', report_form_answer!$G:$G=R$1)=$A'+(i+1)+',"OK")';
-      var last3DaysSubmissionRate   = '=COUNTIF(Q'+(i+1)+':R'+(i+1)+', "OK")/COUNTA(Q'+(i+1)+':R'+(i+1)+')';
+      var last3DaysSubmissionRate   = '=COUNTIF(P'+(i+1)+':R'+(i+1)+', "OK")/COUNTA(P'+(i+1)+':R'+(i+1)+')';
       var last14DaysSubmissionRate  = '=COUNTIF(D'+(i+1)+':R'+(i+1)+', "OK")/COUNTA(D'+(i+1)+':R'+(i+1)+')';
   
       submissionStatusWorksheet.getRange(i+1, 4).setValue(submission14DaysBefore);
